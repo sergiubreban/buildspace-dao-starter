@@ -9,13 +9,13 @@ const sdk = new ThirdwebSDK("rinkeby");
 
 // We can grab a reference to our ERC-1155 contract.
 const bundleDropModule = sdk.getBundleDropModule(
-  process.env.BUDLE_DROP_ADDRESS
+  "0x29deC2C0a8B0926Bd9ecD18AA0611C175059CAc5"
 );
 const tokenModule = sdk.getTokenModule(
-  process.env.TOKEN_MODULE_ADDRESS
+  "0xe497E57da8Ad041DC758501278807A322f96a55C"
 );
 const voteModule = sdk.getVoteModule(
-  process.env.VOTE_MODULE_ADDRESS,
+  "0xad6879D5264910996398162E967d7961c953a736",
 );
 const App = () => {
   const { connectWallet, address, error, provider } = useWeb3();
