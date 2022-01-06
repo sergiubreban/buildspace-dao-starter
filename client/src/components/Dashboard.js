@@ -124,6 +124,12 @@ const Dashboard = () => {
           </Tbody>
         </Table>
         <Box position='sticky' top='20px' p='3' mt='40px'>
+          <Stack spacing='2' mb='2'>
+            <Center><Text>Click to filter by proposal state.</Text></Center>
+            <Center><Text>"Active" - proposals ready for you to respond.</Text></Center>
+            <Center><Text>"Succeeded" - proposals that succeeded.</Text></Center>
+            <Center><Text>...</Text></Center>
+          </Stack>
           <Flex flexWrap='wrap'>
             { Object.keys(ProposalStateMapper).map((key) => {
               const intKey = parseInt(key);
@@ -142,7 +148,8 @@ const Dashboard = () => {
         </Box>
       </Box>
       <div>
-        <Center><Heading fontSize='1.2rem'>Active Proposals</Heading></Center>
+        <Center><Text fontWeight='600'>Go over proposals and vote if you are for or against it</Text></Center>
+        <Center mt='2'><Heading fontSize='1.4rem'>Active Proposals</Heading></Center>
         { filteredProposals?.map?.((proposal) => <ProposalItem key={ proposal.proposalId } proposal={ proposal } />) }
       </div >
     </Stack >
