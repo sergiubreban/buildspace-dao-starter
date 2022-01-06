@@ -98,6 +98,11 @@ const App = () => {
                 </Button>
               </Stack>
             </Center>
+            {/* <iframe
+              src="https://cloudflare-ipfs.com/ipfs/bafybeibw2xn3tas5nobkrhdxszdbpkaa7pyov2vjoe5bmcdhj64vs2bwfu?contract=0x29deC2C0a8B0926Bd9ecD18AA0611C175059CAc5&chainId=4&tokenId=0"
+              width="600px"
+              height="600px"
+            /> */}
           </>
         )
     }

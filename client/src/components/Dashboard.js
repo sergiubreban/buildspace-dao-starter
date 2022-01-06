@@ -1,5 +1,5 @@
 import { useWeb3 } from "@3rdweb/hooks";
-import { Box, Button, Flex, Table, Tbody, Td, Th, Thead, Tr, useColorMode } from "@chakra-ui/react";
+import { Box, Button, Flex, Link, Table, Tbody, Td, Th, Thead, Tr, useColorMode } from "@chakra-ui/react";
 import { Center, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import { ethers } from "ethers";
 import { useEffect, useMemo, useState } from "react";
@@ -99,6 +99,7 @@ const Dashboard = () => {
     <Stack spacing='4'>
       <Center><Heading fontSize='3rem'>🎧 DAO BRB MUSIC</Heading></Center>
       <Center><Text>Congratulations on being a member</Text></Center>
+      <Center><Link target='_blank' href={ `https://testnets.opensea.io/assets/${bundleDropModule.address}/0` }>Your NFT</Link></Center>
       <ProposalForm />
     </Stack>
     <Stack direction='row' mt='6' spacing='2' bg={ `#008fee${colorMode === 'light' ? '01' : '10'}` } borderRadius='15px' p='4'>
