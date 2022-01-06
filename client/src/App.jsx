@@ -4,7 +4,7 @@ import Dashboard from "./components/Dashboard";
 import { UnsupportedChainIdError } from "@web3-react/core";
 import { useBundleDropModule, useSdk } from "./context";
 import Menu from "./components/Menu";
-import { Box, Button, Center, Heading } from "@chakra-ui/react";
+import { Box, Text, Button, Center, Heading, Stack } from "@chakra-ui/react";
 
 
 const App = () => {
@@ -73,25 +73,32 @@ const App = () => {
   return <Box paddingTop='20vh'>
     <Menu />
     { error instanceof UnsupportedChainIdError ? <NetworkError /> :
-      !address ? (<Center>
-        <Heading>Welcome to MusicDAO</Heading>
-        <Button variant='outline' onClick={ () => connectWallet("injected") } className="btn-hero">
+      !address ? (<>
+        <Center>
+          <Heading>Welcome to MusicDAO</Heading>
+        </Center>
+        <Center><Button variant='outline' onClick={ () => connectWallet("injected") } className="btn-hero">
           Connect your wallet
         </Button>
-      </Center>) :
+        </Center>
+      </>) :
         hasClaimedNFT ? <Dashboard /> : (
-          <Center>
-            <Heading>Welcome to Music DAO</Heading>
-            <div className="mint-nft">
-              <h1>Mint your free 🍪DAO Membership NFT</h1>
-              <button
-                disabled={ isClaiming }
-                onClick={ () => mintNft() }
-              >
-                { isClaiming ? "Minting..." : "Mint your nft (FREE)" }
-              </button>
-            </div>
-          </Center>
+          <>
+            <Center>
+              <Heading>Welcome to Music DAO</Heading>
+            </Center>
+            <Center>
+              <Stack spacing='2'>
+                <Text>Mint your free 🍪DAO Membership NFT</Text>
+                <Button
+                  disabled={ isClaiming }
+                  onClick={ () => mintNft() }
+                >
+                  { isClaiming ? "Minting..." : "Mint your nft (FREE)" }
+                </Button>
+              </Stack>
+            </Center>
+          </>
         )
     }
   </Box>
