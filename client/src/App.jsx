@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
 import { UnsupportedChainIdError } from "@web3-react/core";
 import { useBundleDropModule, useSdk } from "./context";
+import Menu from "./components/Menu";
+import { Box, Button, Center, Heading } from "@chakra-ui/react";
 
 
 const App = () => {
@@ -68,27 +70,31 @@ const App = () => {
       });
   }
 
-  return error instanceof UnsupportedChainIdError ? <NetworkError /> :
-    !address ? (<div className="landing">
-      <h1>Welcome to MusicDAO</h1>
-      <button onClick={ () => connectWallet("injected") } className="btn-hero">
-        Connect your wallet
-      </button>
-    </div>) :
-      hasClaimedNFT ? <Dashboard /> : (
-        <div className="landing">
-          <h1>Welcome to Music DAO</h1>
-          <div className="mint-nft">
-            <h1>Mint your free 🍪DAO Membership NFT</h1>
-            <button
-              disabled={ isClaiming }
-              onClick={ () => mintNft() }
-            >
-              { isClaiming ? "Minting..." : "Mint your nft (FREE)" }
-            </button>
-          </div>
-        </div>
-      );
+  return <Box paddingTop='20vh'>
+    <Menu />
+    { error instanceof UnsupportedChainIdError ? <NetworkError /> :
+      !address ? (<Center>
+        <Heading>Welcome to MusicDAO</Heading>
+        <Button variant='outline' onClick={ () => connectWallet("injected") } className="btn-hero">
+          Connect your wallet
+        </Button>
+      </Center>) :
+        hasClaimedNFT ? <Dashboard /> : (
+          <Center>
+            <Heading>Welcome to Music DAO</Heading>
+            <div className="mint-nft">
+              <h1>Mint your free 🍪DAO Membership NFT</h1>
+              <button
+                disabled={ isClaiming }
+                onClick={ () => mintNft() }
+              >
+                { isClaiming ? "Minting..." : "Mint your nft (FREE)" }
+              </button>
+            </div>
+          </Center>
+        )
+    }
+  </Box>
 };
 
 const NetworkError = () => {
