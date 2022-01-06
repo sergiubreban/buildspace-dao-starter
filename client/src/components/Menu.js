@@ -6,7 +6,7 @@ const Menu = () => {
 
   return <Box position='absolute' p='2' top='0' right='0'>
     <Stack spacing={ 2 } direction='row' alignItems='center'>
-      <a href='https://github.com/sergiubreban/gif-portal-starter' target='_blank' rel="noreferrer"><Text>github</Text></a>
+      <a href='https://github.com/sergiubreban/buildspace-dao-starter' target='_blank' rel="noreferrer"><Text>github</Text></a>
       <Button variant='simple' onClick={ toggleColorMode }>
         { colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
       </Button>
