@@ -16,7 +16,6 @@ const ProposalItem = (props) => {
   const voteModule = useVoteModule()
 
   const { address } = useWeb3();
-
   useEffect(() => {
     // Check if the user has already voted on the first proposal.
     voteModule
@@ -32,7 +31,7 @@ const ProposalItem = (props) => {
   const voteProposal = async (type) => {
     const vote = {
       proposalId: proposal.proposalId,
-      vote: null
+      vote: type
     }
 
     try {
@@ -44,7 +43,7 @@ const ProposalItem = (props) => {
         // then we check if the proposal is open for voting (state === 1 means it is open)
         if (proposal.state === 1) {
           // if it is open for voting, we'll vote on it
-          console.log("successfully voted");
+          console.log("successfully voted", vote.proposalId, vote.vote);
           await voteModule.vote(vote.proposalId, vote.vote);
           setHasVoted(true);
         }
